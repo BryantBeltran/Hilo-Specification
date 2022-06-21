@@ -1,2 +1,2 @@
-# Hilo-Specification
- A player Guessing Card Game
+# CSE210-03
+ Game
