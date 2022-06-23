@@ -1,5 +1,5 @@
 using System;
-namespace cse210_03
+namespace CSE210_03
 {
     public class Jumper
     {

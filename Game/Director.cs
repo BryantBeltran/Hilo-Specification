@@ -10,7 +10,7 @@ namespace CSE210_03
     {
         private Word word = new Word();
         private bool isPlaying = true;
-        private Letter seeker = new Letter();
+        private Letter letter = new Letter();
         private TerminalService terminalService = new TerminalService();
 
         /// <summary>
@@ -38,9 +38,8 @@ namespace CSE210_03
         /// </summary>
         private void GetInputs()
         {
-            terminalService.WriteText(hider.location.ToString());
-            int location = terminalService.ReadNumber("\nEnter a location [1-1000]: ");
-            seeker.MoveLocation(location);
+            char letter = terminalService.ReadText("\nGuess a Letter [a-z]: ");
+            word.letter(location);
         }
 
         /// <summary>

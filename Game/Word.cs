@@ -13,6 +13,8 @@ namespace CSE210_03
     public class Word
     {
         public string Letter = "";
+        List<char> GuessesSoFar = new List<char>();
+        
         private List<string> Words = new List<string>
         {
             "Church", "Book", "Nephi", "Manley", "Rexburg", "Utah", "Amulek", "Enos", "Helaman", "Jacob"
@@ -24,7 +26,7 @@ namespace CSE210_03
           return ToBeGuessed;
          }
 
-        public void SetAge(string NewWordTBGuessed)
+        public void SetToBeGuessed(string NewWordTBGuessed)
          {
             ToBeGuessed = NewWordTBGuessed;
          }
@@ -40,20 +42,38 @@ namespace CSE210_03
             ToBeGuessed = Words[index];
         }
 
-        /// <summary>
-        /// Gets a hint for the seeker.
-        /// </summary>
+        public void ChangeLetter(char letter)
+        {
+            this.Letter = letter;
+        }
+
+
+        public void CreateEmptyWord(string Word)
+        {
+            GuessesSoFar.AddRange(Word);
+            foreach (char c in GuessesSoFar)
+            {
+                GuessesSoFar[c] = '_';
+            }
+        }
        
         /// <summary>
         /// Whether or not the hider has been found.
         /// </summary>
         /// <returns>True if found; false if otherwise.</returns>
-        public bool IsFound()
+        public bool IsFound(List<char> GuessesSoFar)
         {
-            return Words.Count
+            foreach(char c in GuessesSoFar)
+            {
+                if (c != '_'){
+                    
+                }
+
+            }
+            return true;
         }
+
 
         
         }
     }
-}
