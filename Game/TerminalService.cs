@@ -1,5 +1,5 @@
 using System;
-
+using System.Collections.Generic;
 
 namespace CSE210_03
 {
@@ -23,10 +23,11 @@ namespace CSE210_03
         /// </summary>
         /// <param name="prompt">The given prompt.</param>
         /// <returns>Inputted text.</returns>
-        public char ReadText(string prompt)
+        public string ReadText()
         {
-            Console.Write(prompt);
-            return Console.ReadLine();
+            Console.Write("prompt");
+
+            return (Console.ReadLine());
         }
 
         /// <summary>

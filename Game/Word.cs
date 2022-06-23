@@ -12,8 +12,8 @@ namespace CSE210_03
     /// </summary>
     public class Word
     {
-        public string Letter = "";
-        List<char> GuessesSoFar = new List<char>();
+        public char Letter = '_';
+        List<string> GuessesSoFar = new List<string>();
         
         private List<string> Words = new List<string>
         {
@@ -48,13 +48,13 @@ namespace CSE210_03
         }
 
 
-        public void CreateEmptyWord(string Word)
+        public List<string> CreateUnderscore()
         {
-            GuessesSoFar.AddRange(Word);
-            foreach (char c in GuessesSoFar)
+            foreach (char c in ToBeGuessed)
             {
-                GuessesSoFar[c] = '_';
+                GuessesSoFar.Add("_");
             }
+            return GuessesSoFar;
         }
        
         /// <summary>
@@ -75,5 +75,5 @@ namespace CSE210_03
 
 
         
-        }
     }
+}

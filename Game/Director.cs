@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+
 namespace CSE210_03
 {
     /// <summary>
@@ -10,8 +13,10 @@ namespace CSE210_03
     {
         private Word word = new Word();
         private bool isPlaying = true;
-        private Letter letter = new Letter();
         private TerminalService terminalService = new TerminalService();
+        public List<string> GuessesSoFar = new List<string>();
+
+
 
         /// <summary>
         /// Constructs a new instance of Director.
@@ -32,14 +37,11 @@ namespace CSE210_03
                 DoOutputs();
             }
         }
-
-        /// <summary>
-        /// Moves the seeker to a new location.
-        /// </summary>
         private void GetInputs()
         {
-            char letter = terminalService.ReadText("\nGuess a Letter [a-z]: ");
-            word.letter(location);
+            List<string> GuessesSoFar = word.CreateUnderscore(word);
+            string letter = terminalService.ReadText("\nGuess a Letter [a-z]: ");
+            word.ChangeLetter(letter);
         }
 
         /// <summary>
