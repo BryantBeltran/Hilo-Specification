@@ -3,31 +3,22 @@ using System.Collections.Generic;
 
 namespace CSE210_03
 {
-    /// <summary>
-    /// <para>A person who directs the game.</para>
-    /// <para>
-    /// The responsibility of a Director is to control the sequence of play.
-    /// </para>
-    /// </summary>
+
     public class Director
     {
         private Word word = new Word();
         private bool isPlaying = true;
         private TerminalService terminalService = new TerminalService();
         public List<string> GuessesSoFar = new List<string>();
+        public string letter = "_";
+        
 
+        private JumperNew manley = new JumperNew();
 
-
-        /// <summary>
-        /// Constructs a new instance of Director.
-        /// </summary>
         public Director()
         {
         }
 
-        /// <summary>
-        /// Starts the game by running the main game loop.
-        /// </summary>
         public void StartGame()
         {
             while (isPlaying)
@@ -39,29 +30,26 @@ namespace CSE210_03
         }
         private void GetInputs()
         {
-            List<string> GuessesSoFar = word.CreateUnderscore(word);
-            string letter = terminalService.ReadText("\nGuess a Letter [a-z]: ");
-            word.ChangeLetter(letter);
+            word.PrintGuessesSoFar();
+            manley.PrintChute();
+            manley.PrintPerson();
+            List<string> GuessesSoFar = word.CreateUnderscore();
+            string letter = terminalService.ReadText("Guess a Letter [a-z]: ");
         }
 
-        /// <summary>
-        /// Keeps watch on where the seeker is moving.
-        /// </summary>
         private void DoUpdates()
         {
-            hider.WatchSeeker(seeker);
+            bool foundALetter = word.CompareLettertoWord(letter);
+            if (foundALetter == false)
+            {
+                manley.CutChute();
+            }
+            isPlaying = !manley.IsDead();
         }
-
-        /// <summary>
-        /// Provides a hint for the seeker to use.
-        /// </summary>
         private void DoOutputs()
         {
-            string hint = hider.GetHint();
-            terminalService.WriteText(hint);
-            if (hider.IsFound())
-            {
-                isPlaying = false;
+            if (!isPlaying){
+                Console.WriteLine("You Lost, Todd is the best Programmer");
             }
             
         }

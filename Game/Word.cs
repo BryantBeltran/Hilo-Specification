@@ -4,15 +4,10 @@ using System.Collections.Generic;
 
 namespace CSE210_03
 {
-    /// <summary>
-    /// <para>The hidden word to be guessed.</para>
-    /// <para>
-    /// The responsibility of Word is to keep track of the letters coming from the Letter file.
-    /// </para>
-    /// </summary>
+
     public class Word
     {
-        public char Letter = '_';
+       
         List<string> GuessesSoFar = new List<string>();
         
         private List<string> Words = new List<string>
@@ -32,21 +27,13 @@ namespace CSE210_03
          }
 
 
-        /// <summary>
-        /// Constructs a new instance of Word. 
-        /// </summary>
+        
         public Word()
         {
             Random random = new Random();
             int index = random.Next(Words.Count);
             ToBeGuessed = Words[index];
         }
-
-        public void ChangeLetter(char letter)
-        {
-            this.Letter = letter;
-        }
-
 
         public List<string> CreateUnderscore()
         {
@@ -56,16 +43,39 @@ namespace CSE210_03
             }
             return GuessesSoFar;
         }
-       
-        /// <summary>
-        /// Whether or not the hider has been found.
-        /// </summary>
-        /// <returns>True if found; false if otherwise.</returns>
-        public bool IsFound(List<char> GuessesSoFar)
-        {
-            foreach(char c in GuessesSoFar)
+
+        public void PrintGuessesSoFar(){
+            foreach (string s in GuessesSoFar) {
+                Console.Write($"{s} ");
+            }
+        }
+
+        public bool CompareLettertoWord(string letter) {
+
+            bool found = false;
+
+            for (int i = 0;  i <  ToBeGuessed.Length; i ++)
             {
-                if (c != '_'){
+                string current_letter = char.ToString(ToBeGuessed[i]);
+                
+                if (current_letter == letter)
+                {
+                    found = true;
+                    GuessesSoFar[i] = current_letter;
+                }
+            }
+
+            return found;
+            
+        }
+       
+
+        /// <returns>True if found; false if otherwise.</returns>
+        public bool IsFound(List<string> GuessesSoFar)
+        {
+            foreach(string c in GuessesSoFar)
+            {
+                if (c != "_"){
                     
                 }
 

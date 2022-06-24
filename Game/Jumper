@@ -9,6 +9,10 @@ namespace CSE210_03
             "  ___  ", " /___\\ ", " \\   / ", "  \\  /", "  \\ /"};
         private List<string> person = new List<string>() {"   0   ", "  /|\\  ", "  / \\  "};
 
+        public JumperNew()
+        {
+
+        }
         public void PrintChute()
         {
             foreach (string line in parachute)
