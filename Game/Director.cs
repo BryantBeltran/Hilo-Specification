@@ -13,7 +13,7 @@ namespace CSE210_03
         public string letter = "_";
         
 
-        private JumperNew manley = new JumperNew();
+        public JumperNew manley = new JumperNew();
 
         public Director()
         {

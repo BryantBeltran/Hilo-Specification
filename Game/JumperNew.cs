@@ -3,13 +3,13 @@ using System.Collections.Generic;
 
 namespace CSE210_03
 {
-    public class Jumper
+    public class JumperNew
     {
         private List<string> parachute = new List<string>() {
             "  ___  ", " /___\\ ", " \\   / ", "  \\  /", "  \\ /"};
         private List<string> person = new List<string>() {"   0   ", "  /|\\  ", "  / \\  "};
 
-        public Jumper()
+        public JumperNew()
         {
 
         }
