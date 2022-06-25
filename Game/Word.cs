@@ -16,23 +16,16 @@ namespace CSE210_03
         };
         private string ToBeGuessed= "";
 
-        public string GetToBeGuessed()
-        {
-          return ToBeGuessed;
-         }
-
-        public void SetToBeGuessed(string NewWordTBGuessed)
-         {
-            ToBeGuessed = NewWordTBGuessed;
-         }
-
-
-        
         public Word()
         {
+        }
+
+        
+        public string PullWord(){
             Random random = new Random();
             int index = random.Next(Words.Count);
             ToBeGuessed = Words[index];
+            return ToBeGuessed;
         }
 
         public List<string> CreateUnderscore()
