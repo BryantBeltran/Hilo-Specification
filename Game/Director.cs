@@ -6,11 +6,13 @@ namespace CSE210_03
 
     public class Director
     {
-        private Word word = new Word();
+    
         private bool isPlaying = true;
+        private Word word = new Word();
         private TerminalService terminalService = new TerminalService();
         public List<string> GuessesSoFar = new List<string>();
         public string letter = "_";
+        public string ToBeGuessed;
         
 
         public JumperNew manley = new JumperNew();
@@ -20,7 +22,8 @@ namespace CSE210_03
         }
 
         public void StartGame()
-        {
+        {   ToBeGuessed = word.PullWord();
+            List<string> GuessesSoFar = word.CreateUnderscore();
             while (isPlaying)
             {
                 GetInputs();
@@ -30,10 +33,10 @@ namespace CSE210_03
         }
         private void GetInputs()
         {
+            Console.WriteLine("\n");
             word.PrintGuessesSoFar();
             manley.PrintChute();
             manley.PrintPerson();
-            List<string> GuessesSoFar = word.CreateUnderscore();
             string letter = terminalService.ReadText("Guess a Letter [a-z]: ");
         }
 

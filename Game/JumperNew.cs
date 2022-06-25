@@ -6,7 +6,7 @@ namespace CSE210_03
     public class JumperNew
     {
         private List<string> parachute = new List<string>() {
-            "  ___  ", " /___\\ ", " \\   / ", "  \\  /", "  \\ /"};
+            "  ___  ", " /___\\ ", " |    | ", " \\   /", "  \\ /"};
         private List<string> person = new List<string>() {"   0   ", "  /|\\  ", "  / \\  "};
 
         public JumperNew()
@@ -15,6 +15,7 @@ namespace CSE210_03
         }
         public void PrintChute()
         {
+             Console.WriteLine("\n");
             foreach (string line in parachute)
             {
                 Console.WriteLine(line);
