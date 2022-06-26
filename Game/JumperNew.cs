@@ -35,7 +35,7 @@ namespace CSE210_03
 
         public void CutChute()
         {
-            if (parachute.Count >= 0)
+            if (parachute.Count > 0)
             {
                 parachute.Remove(parachute[0]);
             }

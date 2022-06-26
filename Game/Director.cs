@@ -64,7 +64,14 @@ namespace CSE210_03
             }
             else {
                 word.PrintGuessesSoFar();
-                Console.WriteLine("\n YOU WON! BRO MANLEY is the BEST");
+                if (!manley.IsDead())
+                {
+                    Console.WriteLine("\n YOU WON! BRO MANLEY is the BEST");
+                }
+                else
+                {
+                    Console.WriteLine("\n YOU LOSE. Ah chute.");
+                }
             }
 
 
