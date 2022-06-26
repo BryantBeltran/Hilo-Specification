@@ -30,7 +30,7 @@ namespace CSE210_03
 
         public List<string> CreateUnderscore()
         {
-            foreach (char c in ToBeGuessed)
+            foreach (int i in GuessesSoFar)
             {
                 GuessesSoFar.Add("_");
             }

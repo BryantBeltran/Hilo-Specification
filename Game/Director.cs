@@ -22,14 +22,20 @@ namespace CSE210_03
         }
 
         public void StartGame()
-        {   ToBeGuessed = word.PullWord();
-            List<string> GuessesSoFar = word.CreateUnderscore();
+        {   Initialize();
             while (isPlaying)
             {
                 GetInputs();
                 DoUpdates();
                 DoOutputs();
             }
+        }
+
+        private void Initialize(){
+            ToBeGuessed = word.GenerateNewWord();
+            word.MakeWordAList(ToBeGuessed);
+            word.CreateUnderscoreWord();
+            word.PrintGuessesSoFar();
         }
         private void GetInputs()
         {
