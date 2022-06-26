@@ -7,8 +7,8 @@ namespace CSE210_03
     public class Director
     {
     
-        public bool isPlaying = true;
-         public string ToBeGuessed;
+        private bool isPlaying = true;
+        private string ToBeGuessed;
         public Word word = new Word();
         public TerminalService terminalService = new TerminalService();
         

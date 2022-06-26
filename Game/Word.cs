@@ -12,11 +12,11 @@ namespace CSE210_03
         List<char> GuessesSoFar = new List<char>();
         List<char> answer = new List<char>();
         
-        public List<string> Words = new List<string>
+        private List<string> Words = new List<string>
         {
             "Church", "Book", "Nephi", "Manley", "Rexburg", "Utah", "Amulek", "Enos", "Helaman", "Jacob"
         };
-        public string ToBeGuessed= "";
+        private string ToBeGuessed= "";
 
         public Word()
         {
