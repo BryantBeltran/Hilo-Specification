@@ -7,16 +7,14 @@ namespace CSE210_03
     public class Director
     {
     
-        private bool isPlaying = true;
-        private Word word = new Word();
-        private TerminalService terminalService = new TerminalService();
-        public List<string> GuessesSoFar = new List<string>();
-        public string letter = "_";
-        public string ToBeGuessed;
+        public bool isPlaying = true;
+         public string ToBeGuessed;
+        public Word word = new Word();
+        public TerminalService terminalService = new TerminalService();
         
-
         public JumperNew manley = new JumperNew();
-
+        public string letter = "_";
+       
         public Director()
         {
         }
@@ -40,27 +38,36 @@ namespace CSE210_03
         private void GetInputs()
         {
             Console.WriteLine("\n");
-            word.PrintGuessesSoFar();
             manley.PrintChute();
             manley.PrintPerson();
-            string letter = terminalService.ReadText("Guess a Letter [a-z]: ");
+            letter = terminalService.ReadText("Guess a Letter [a-z]: ");
         }
 
         private void DoUpdates()
         {
-            bool foundALetter = word.CompareLettertoWord(letter);
-            if (foundALetter == false)
+            int LoseOrWin = word.Compare(letter);
+            if (LoseOrWin == 1)
             {
                 manley.CutChute();
             }
             isPlaying = !manley.IsDead();
         }
         private void DoOutputs()
-        {
-            if (!isPlaying){
-                Console.WriteLine("You Lost, Todd is the best Programmer");
+        { 
+            int gameOver = word.checkbothlists();
+            if (gameOver == 1){
+                isPlaying = false;
             }
-            
+            Console.WriteLine("\n");
+            if (isPlaying){
+                word.PrintGuessesSoFar();
+            }
+            else {
+                word.PrintGuessesSoFar();
+                Console.WriteLine("\n YOU WON! BRO MANLEY is the BEST");
+            }
+
+
         }
     }
 }

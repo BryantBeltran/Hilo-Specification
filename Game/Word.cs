@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 
 namespace CSE210_03
@@ -8,72 +9,62 @@ namespace CSE210_03
     public class Word
     {
        
-        List<string> GuessesSoFar = new List<string>();
+        List<char> GuessesSoFar = new List<char>();
+        List<char> answer = new List<char>();
         
-        private List<string> Words = new List<string>
+        public List<string> Words = new List<string>
         {
             "Church", "Book", "Nephi", "Manley", "Rexburg", "Utah", "Amulek", "Enos", "Helaman", "Jacob"
         };
-        private string ToBeGuessed= "";
+        public string ToBeGuessed= "";
 
         public Word()
         {
         }
 
         
-        public string PullWord(){
+        public string GenerateNewWord(){
             Random random = new Random();
             int index = random.Next(Words.Count);
             ToBeGuessed = Words[index];
             return ToBeGuessed;
         }
 
-        public List<string> CreateUnderscore()
+        public void MakeWordAList(string TBGuess){
+            answer.AddRange(TBGuess.ToLower());
+        }
+
+        public void CreateUnderscoreWord()
         {
-            foreach (int i in GuessesSoFar)
+            foreach (int i in answer)
             {
-                GuessesSoFar.Add("_");
+                GuessesSoFar.Add('_');
             }
-            return GuessesSoFar;
         }
 
         public void PrintGuessesSoFar(){
-            foreach (string s in GuessesSoFar) {
-                Console.Write($"{s} ");
-            }
+            Console.WriteLine(string.Format("{0}", string.Join(" ", GuessesSoFar)));       
         }
 
-        public bool CompareLettertoWord(string letter) {
+        public int Compare(string letter){
+            for(int i=0;i<answer.Count;i++){
+                if (letter.Contains(answer[i])){
+                    GuessesSoFar[i] = answer[i];}}
+            if (answer.Contains(char.Parse(letter))){
+                return 0;}
+            else {
+                return 1;}
 
-            bool found = false;
-
-            for (int i = 0;  i <  ToBeGuessed.Length; i ++)
-            {
-                string current_letter = char.ToString(ToBeGuessed[i]);
-                
-                if (current_letter == letter)
-                {
-                    found = true;
-                    GuessesSoFar[i] = current_letter;
-                }
-            }
-
-            return found;
-            
         }
-       
 
-        /// <returns>True if found; false if otherwise.</returns>
-        public bool IsFound(List<string> GuessesSoFar)
-        {
-            foreach(string c in GuessesSoFar)
-            {
-                if (c != "_"){
-                    
-                }
-
-            }
-            return true;
+        public int checkbothlists(){
+        bool isEqual = Enumerable.SequenceEqual(answer, GuessesSoFar);
+        if (isEqual) {
+            return 1;
+        }
+        else {
+            return 0;
+        }
         }
 
 
